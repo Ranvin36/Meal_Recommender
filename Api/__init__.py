@@ -8,9 +8,9 @@ def create_app(test_config=None):
     app = Flask(__name__,instance_relative_config=True)
     CORS(app, resources={r"*": {"origins": "*"}})
     app.config['CORS_HEADERS'] = 'Content-Type'
-    model = joblib.load("./SavedModels/knn.pkl")
+    model = joblib.load("./Dataset/knn.pkl")
     dataset = pd.read_csv("./Dataset/preprocessed_dataset.csv")
-    tfid = joblib.load("./Dataset/tfid_vectorizer.pkl")
+    tfid = joblib.load("./SavedModels/tfid_vectorizer.pkl")
 
     @app.route("/test",methods=["POST"])
     def testEndpoint():
